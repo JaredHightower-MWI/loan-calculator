@@ -40,39 +40,36 @@ export const Calculator = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const purchasePrice = purchasePriceRef.current?.valueAsNumber
-    const rehabCost = rehabCostRef.current?.valueAsNumber
-    const arv = arvRef.current?.valueAsNumber
+    const purchasePrice: number = purchasePriceRef.current?.valueAsNumber!
+    const rehabCost: number = rehabCostRef.current?.valueAsNumber!
+    const arv: number = arvRef.current?.valueAsNumber!
 
-    if (purchasePrice && rehabCost && arv) {
-      const [
-        purchasePriceCovered,
-        rehabCostCovered,
-        addedPPandRC,
-        loanBasedOnArv,
-      ] = percentCovered(purchasePrice, rehabCost, arv)
+    const [
+      purchasePriceCovered,
+      rehabCostCovered,
+      addedPPandRC,
+      loanBasedOnArv,
+    ] = percentCovered(purchasePrice, rehabCost, arv)
 
-      const standardLoanAmount = regularRates(purchasePrice, rehabCost, arv)
-      const premiumLoanAmount = premiumRates(arv)
+    const standardLoanAmount = regularRates(purchasePrice, rehabCost, arv)
+    const premiumLoanAmount = premiumRates(arv)
 
-      const formattedPP = convertToUsd(purchasePrice)
-      const formattedRC = convertToUsd(rehabCost)
-      const formattedARV = convertToUsd(arv)
+    const formattedPP = convertToUsd(purchasePrice)
+    const formattedRC = convertToUsd(rehabCost)
+    const formattedARV = convertToUsd(arv)
 
-      setPurchasePrice(formattedPP)
-      setRehabCost(formattedRC)
-      setArv(formattedARV)
+    setPurchasePrice(formattedPP)
+    setRehabCost(formattedRC)
+    setArv(formattedARV)
 
-      setSumForPPandRC(addedPPandRC)
-      setSumForArvLtv(loanBasedOnArv)
+    setSumForPPandRC(addedPPandRC)
+    setSumForArvLtv(loanBasedOnArv)
 
-      setPPPercentCovered(purchasePriceCovered)
-      setRCPercentCovered(rehabCostCovered)
+    setPPPercentCovered(purchasePriceCovered)
+    setRCPercentCovered(rehabCostCovered)
 
-      setRegularRateLoanAmount(standardLoanAmount!)
-      setPremiumRateLoanAmount(premiumLoanAmount)
-    }
-    return
+    setRegularRateLoanAmount(standardLoanAmount!)
+    setPremiumRateLoanAmount(premiumLoanAmount)
   }
 
   return (

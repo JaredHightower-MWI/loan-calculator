@@ -30,7 +30,7 @@ export const percentCovered = (
 ) => {
   const COVERAGE_RATIO = 0.9
   const purchasePriceCovered = purchasePrice * COVERAGE_RATIO
-  const rehabCostCovered = rehab * COVERAGE_RATIO
+  const rehabCostCovered = rehab != 0 ? rehab * COVERAGE_RATIO : 0
 
   const addPPandRC = purchasePriceCovered + rehabCostCovered
   const loanBasedOnArv = arv * 0.65
