@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BiPurchaseTagAlt, BiWrench, BiHomeSmile } from 'react-icons/bi'
 import { Button, Label, TextInput } from 'flowbite-react'
 import { percentCovered, regularRates } from '@/utils/regularRates'
@@ -18,6 +18,10 @@ import {
 import { convertToUsd } from '@/utils/formatToUsd'
 
 export const Calculator = () => {
+  const [onchangeInput1, setOnchangeInput1] = useState('')
+  const [onchangeInput2, setOnchangeInput2] = useState('')
+  const [onchangeInput3, setOnchangeInput3] = useState('')
+
   const setPurchasePrice = useSetRecoilState(purchasePriceAtom)
   const setRehabCost = useSetRecoilState(rehabCostAtom)
   const setArv = useSetRecoilState(arvAtom)
@@ -72,6 +76,12 @@ export const Calculator = () => {
     setPremiumRateLoanAmount(premiumLoanAmount)
   }
 
+  const removeDecimal = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const regex = new RegExp(/\.+(\.\d*$)/g)
+    const cleanInput = e.target.valueAsNumber.toString().replace(regex, '')
+    return cleanInput
+  }
+
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
       <div>
@@ -83,7 +93,9 @@ export const Calculator = () => {
           type='number'
           required={true}
           ref={purchasePriceRef}
+          value={onchangeInput1}
           icon={BiPurchaseTagAlt}
+          onChange={(e) => setOnchangeInput1(removeDecimal(e))}
           placeholder='Purchase Price'
         />
       </div>
@@ -97,7 +109,9 @@ export const Calculator = () => {
           required={true}
           icon={BiWrench}
           ref={rehabCostRef}
+          value={onchangeInput2}
           placeholder='Rehab Cost'
+          onChange={(e) => setOnchangeInput2(removeDecimal(e))}
         />
       </div>
       <div>
@@ -110,7 +124,9 @@ export const Calculator = () => {
           ref={arvRef}
           required={true}
           icon={BiHomeSmile}
+          value={onchangeInput3}
           placeholder='After Repair Value'
+          onChange={(e) => setOnchangeInput3(removeDecimal(e))}
         />
       </div>
       <Button type='submit'>Submit</Button>

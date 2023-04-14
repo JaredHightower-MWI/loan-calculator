@@ -4,7 +4,7 @@ import { Table } from 'flowbite-react'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 
-const DESIREABLE_NET_PROFIT = 14000
+const DESIREABLE_NET_PROFIT = 20000
 
 export const DealOrNoDeal = () => {
   const originalPP = useRecoilValue(purchasePriceAtom)
@@ -32,6 +32,8 @@ export const DealOrNoDeal = () => {
   const formattedEscs = convertToUsd(escs)
   const formattedEtc = convertToUsd(etc)
   const formattedNetProfits = convertToUsd(netProfit)
+
+  const netProfitAmount = DESIREABLE_NET_PROFIT.toString().slice(0, 2)
 
   return (
     <Table striped={true}>
@@ -73,7 +75,9 @@ export const DealOrNoDeal = () => {
           <Table.Cell className='font-medium text-gray-900 whitespace-nowrap dark:text-white'>
             Is this a deal?
           </Table.Cell>
-          <Table.Cell>A good deal is ENP of 14K or More</Table.Cell>
+          <Table.Cell>
+            A good deal is ENP of {netProfitAmount}K or More
+          </Table.Cell>
           <Table.Cell>{isAGoodDeal ? 'Yes' : 'No'}</Table.Cell>
         </Table.Row>
       </Table.Body>
