@@ -95,8 +95,9 @@ export const Calculator = () => {
           ref={purchasePriceRef}
           value={onchangeInput1}
           icon={BiPurchaseTagAlt}
-          onChange={(e) => setOnchangeInput1(removeDecimal(e))}
           placeholder='Purchase Price'
+          onWheelCapture={(e) => e.currentTarget.blur()}
+          onChange={(e) => setOnchangeInput1(removeDecimal(e))}
         />
       </div>
       <div>
@@ -111,6 +112,7 @@ export const Calculator = () => {
           ref={rehabCostRef}
           value={onchangeInput2}
           placeholder='Rehab Cost'
+          onWheelCapture={(e) => e.currentTarget.blur()}
           onChange={(e) => setOnchangeInput2(removeDecimal(e))}
         />
       </div>
@@ -126,6 +128,7 @@ export const Calculator = () => {
           icon={BiHomeSmile}
           value={onchangeInput3}
           placeholder='After Repair Value'
+          onWheelCapture={(e) => e.currentTarget.blur()}
           onChange={(e) => setOnchangeInput3(removeDecimal(e))}
         />
       </div>
