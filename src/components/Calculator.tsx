@@ -83,56 +83,58 @@ export const Calculator = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-      <div>
-        <div className='block mb-2'>
-          <Label htmlFor='purchasePrice' value='Purchase Price' />
+    <div className='flex justify-center w-full'>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+        <div>
+          <div className='block mb-2'>
+            <Label htmlFor='purchasePrice' value='Purchase Price' />
+          </div>
+          <TextInput
+            id='purchasePrice'
+            type='number'
+            required={true}
+            ref={purchasePriceRef}
+            value={onchangeInput1}
+            icon={BiPurchaseTagAlt}
+            placeholder='Purchase Price'
+            onWheelCapture={(e) => e.currentTarget.blur()}
+            onChange={(e) => setOnchangeInput1(removeDecimal(e))}
+          />
         </div>
-        <TextInput
-          id='purchasePrice'
-          type='number'
-          required={true}
-          ref={purchasePriceRef}
-          value={onchangeInput1}
-          icon={BiPurchaseTagAlt}
-          placeholder='Purchase Price'
-          onWheelCapture={(e) => e.currentTarget.blur()}
-          onChange={(e) => setOnchangeInput1(removeDecimal(e))}
-        />
-      </div>
-      <div>
-        <div className='block mb-2'>
-          <Label htmlFor='rehab' value='Rehab' />
+        <div>
+          <div className='block mb-2'>
+            <Label htmlFor='rehab' value='Rehab' />
+          </div>
+          <TextInput
+            id='rehab'
+            type='number'
+            required={true}
+            icon={BiWrench}
+            ref={rehabCostRef}
+            value={onchangeInput2}
+            placeholder='Rehab Cost'
+            onWheelCapture={(e) => e.currentTarget.blur()}
+            onChange={(e) => setOnchangeInput2(removeDecimal(e))}
+          />
         </div>
-        <TextInput
-          id='rehab'
-          type='number'
-          required={true}
-          icon={BiWrench}
-          ref={rehabCostRef}
-          value={onchangeInput2}
-          placeholder='Rehab Cost'
-          onWheelCapture={(e) => e.currentTarget.blur()}
-          onChange={(e) => setOnchangeInput2(removeDecimal(e))}
-        />
-      </div>
-      <div>
-        <div className='block mb-2'>
-          <Label htmlFor='arv' value='After Repair Value' />
+        <div>
+          <div className='block mb-2'>
+            <Label htmlFor='arv' value='After Repair Value' />
+          </div>
+          <TextInput
+            id='arv'
+            type='number'
+            ref={arvRef}
+            required={true}
+            icon={BiHomeSmile}
+            value={onchangeInput3}
+            placeholder='After Repair Value'
+            onWheelCapture={(e) => e.currentTarget.blur()}
+            onChange={(e) => setOnchangeInput3(removeDecimal(e))}
+          />
         </div>
-        <TextInput
-          id='arv'
-          type='number'
-          ref={arvRef}
-          required={true}
-          icon={BiHomeSmile}
-          value={onchangeInput3}
-          placeholder='After Repair Value'
-          onWheelCapture={(e) => e.currentTarget.blur()}
-          onChange={(e) => setOnchangeInput3(removeDecimal(e))}
-        />
-      </div>
-      <Button type='submit'>Submit</Button>
-    </form>
+        <Button type='submit'>Submit</Button>
+      </form>
+    </div>
   )
 }

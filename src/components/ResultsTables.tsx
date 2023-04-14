@@ -48,21 +48,21 @@ export const ResultsTables = () => {
   const displayLtvPercentage = ltvPercentage(selectedRate)
 
   return (
-    <div className='mt-10 min-w-min'>
+    <div className='mt-10'>
       <Tabs.Group
         aria-label='Tabs with underline'
         style='underline'
-        className='flex justify-around'
+        className='flex justify-evenly'
       >
         <Tabs.Item title='10% Rule'>
           <DealOrNoDeal />
         </Tabs.Item>
         <Tabs.Item active={true} title='Acquisition Rates'>
-          <div className='flex flex-row justify-between my-6'>
+          <div className='flex flex-row my-10 justify-evenly'>
             <RatesAndTermsButton selectedRates='standard' />
             <RatesAndTermsButton selectedRates='premium' />
           </div>
-          <Table striped={true} className='py-6'>
+          <Table striped={true}>
             <Table.Head>
               <Table.HeadCell></Table.HeadCell>
               <Table.HeadCell></Table.HeadCell>

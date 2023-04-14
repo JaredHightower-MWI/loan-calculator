@@ -23,7 +23,7 @@ export const RatesAndTermsButton = ({ selectedRates }: RatesAndTermsProps) => {
     <div>
       {selectedRates === 'standard' && (
         <Button
-          className='w-40'
+          className='w-20'
           size='md'
           outline={standardActive}
           onClick={handleClick}
@@ -33,7 +33,7 @@ export const RatesAndTermsButton = ({ selectedRates }: RatesAndTermsProps) => {
       )}
       {selectedRates === 'premium' && (
         <Button
-          className='w-40'
+          className='w-20'
           size='md'
           outline={premiumActive}
           onClick={handleClick}
