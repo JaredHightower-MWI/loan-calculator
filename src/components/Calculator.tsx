@@ -77,7 +77,7 @@ export const Calculator = () => {
   }
 
   const removeDecimal = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const regex = new RegExp(/\.+(\.\d*$)/g)
+    const regex = new RegExp(/\W(.\d+)/g)
     const cleanInput = e.target.valueAsNumber.toString().replace(regex, '')
     return cleanInput
   }
